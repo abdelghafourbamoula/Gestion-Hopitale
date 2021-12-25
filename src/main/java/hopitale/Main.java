@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         
         try{
-            scene = new Scene(loadFXML("Authentification"));
+            scene = new Scene(loadFXML("AdminGestCat"));
             primaryStage.setScene(scene);
             primaryStage.setTitle("Hopitale");
             primaryStage.show();
