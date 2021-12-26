@@ -190,7 +190,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button fx:id="bModifier" layoutX="444.0" layoutY="356.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="94.0" style="-fx-background-color: #ff7100;" text="Modifier" textAlignment="CENTER">
+                  <Button fx:id="bModifier" layoutX="444.0" layoutY="356.0" mnemonicParsing="false" onAction="#updateData" prefHeight="36.0" prefWidth="94.0" style="-fx-background-color: #ff7100;" text="Modifier" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

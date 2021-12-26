@@ -176,6 +176,7 @@ try{
         designationCat.setText("");
         numCat.setText("");
         chefCat.setText("");
+        LblMessageSuccees.setText("");
         ShowCateg(requete);
     }catch(Exception exc){       
        exc.printStackTrace();
@@ -225,15 +226,49 @@ try{
      }
      @FXML
      public void supprimerData(Event e){
-           String requete = "SELECT * FROM Categorie" ;
+           String requete = "SELECT * FROM categorie" ;
+           
     try{
-        String query = "DELETE FROM Categorie WHERE Id_Categorie = "+IdCat.getText() +";";
-        ShowCateg(query);
+      if(IdCat.getText() != null){
+        String query = "DELETE FROM categorie WHERE Id_Categorie = " + IdCat.getText() + " ;";
+        Connection cnt = getConnection();
+        Statement stmt ; 
+        stmt = cnt.createStatement();
+        stmt.executeUpdate(query);
+        ShowCateg(requete);
+        LblMessageSuccees.setText("  Ligne bien supprimer ");
+        LblMessageError.setText("");
+       }
     }catch(Exception exc){       
        exc.printStackTrace();
        ShowCateg(requete);
     }
 }
+// ---------- Updating data  -------
+      @FXML
+     public void updateData(Event e){
+           String requete = "SELECT * FROM categorie" ;
+           
+    try{
+      if(IdCat.getText() != null){
+        String query = "UPDATE categorie SET Designation = '"
+                + designationCat.getText() + "' , Nombre_Chembre ='"
+                + numCat.getText() + "' , Nom_Chef = '"
+                + chefCat.getText() + "'"
+                +" WHERE Id_Categorie = '" + IdCat.getText() + "';";
+        Connection cnt = getConnection();
+        Statement stmt ; 
+        stmt = cnt.createStatement();
+        stmt.executeUpdate(query);
+        ShowCateg(requete);
+        LblMessageSuccees.setText("L'enregisterement est modifier");
+       }
+    }catch(Exception exc){       
+       exc.printStackTrace();
+       ShowCateg(requete);
+    }
+}
+     
 }
 
 
