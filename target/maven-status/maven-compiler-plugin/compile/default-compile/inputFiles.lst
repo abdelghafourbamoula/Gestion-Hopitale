@@ -1,6 +1,4 @@
-/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/AdminGestMedcinsController.java
-/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/Medcin.java
-/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/AuthentificationController.java
+/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/SecondaryController.java
 /home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/module-info.java
-/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/AdminGestCatController.java
-/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/Main.java
+/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/App.java
+/home/abdelghafour/NetBeansProjects/gestion_hopitale/src/main/java/hopitale/PrimaryController.java
