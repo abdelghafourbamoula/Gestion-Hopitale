@@ -24,7 +24,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>hopitale.App</mainClass>
+                     <mainClass>hopitale.Main</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -55,7 +55,7 @@ public class AuthentificationController implements Initializable {
         progInd.setLayoutX(50); progInd.setLayoutY(50);
         progInd.setProgress(20);
         
-    }   
+    }    
     
     @FXML
     private void Quitter(ActionEvent event) {
