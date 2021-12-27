@@ -234,7 +234,7 @@ public class AdminGestMedcinsController implements Initializable{
     public Connection getConnection(){
         Connection con = null;
         try{
-            String url = "jdbc:sqlite:/home/abdelghafour/Documents/db/Hopitale.db";
+            String url = "jdbc:sqlite:/home/abdelghafour/NetBeansProjects/gestion_hopitale/Hopitale.db";
             con = DriverManager.getConnection(url);
         }
         catch(SQLException ex){
