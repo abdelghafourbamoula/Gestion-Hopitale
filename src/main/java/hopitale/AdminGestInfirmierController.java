@@ -35,7 +35,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class AdminGestMedcinsController implements Initializable{
+public class AdminGestInfirmierController implements Initializable{
     @FXML
     private Button bAnnuler;
 
@@ -135,7 +135,7 @@ public class AdminGestMedcinsController implements Initializable{
             RadioButton selSexe = (RadioButton) sexe.getSelectedToggle();
             Connection con = getConnection();
 
-            String query = "INSERT INTO Medcin VALUES ("+
+            String query = "INSERT INTO Infirmier VALUES ("+
                                 "\""+tfCin.getText()+"\", "+
                                 "\""+tfNom.getText()+"\", "+
                                 "\""+tfPrenom.getText()+"\", "+
@@ -177,7 +177,7 @@ public class AdminGestMedcinsController implements Initializable{
     @FXML
     private void RechercherMedcin(ActionEvent event) {
         if(tfRechercherMed.getText() != ""){
-            showMedcins("WHERE LOWER(nom) = '"+tfRechercherMed.getText().toLowerCase()+"'");
+            showMedcins("WHERE LOWER(nom) = '"+tfRechercherMed.getText()+"'");
         } else {
             showMedcins("");
         }
@@ -191,7 +191,7 @@ public class AdminGestMedcinsController implements Initializable{
                                     " "+tableMedcin.getSelectionModel().getSelectedItem().getPrenom());
         alertConfirm.initModality(Modality.APPLICATION_MODAL);
         Connection con = getConnection();
-        String query = "DELETE FROM Medcin Where cin='"+tableMedcin.getSelectionModel().getSelectedItem().getCin()+"';";
+        String query = "DELETE FROM Infirmier Where cin='"+tableMedcin.getSelectionModel().getSelectedItem().getCin()+"';";
         alertConfirm.showAndWait().ifPresent(reponse -> {
             if(reponse == ButtonType.OK){   
                 try{
@@ -210,7 +210,7 @@ public class AdminGestMedcinsController implements Initializable{
     private void ModifierMedcin(ActionEvent event) {
         Connection con = getConnection();
         RadioButton selSexe = (RadioButton) sexe.getSelectedToggle();
-        String query =  "UPDATE Medcin SET "+
+        String query =  "UPDATE Infirmier SET "+
                         "cin='"+tfCin.getText()+"', "+
                         "nom='"+tfNom.getText()+"', "+
                         "prenom='"+tfPrenom.getText()+"', "+
@@ -250,7 +250,7 @@ public class AdminGestMedcinsController implements Initializable{
         ObservableList<Medcin> listMedcin = FXCollections.observableArrayList();
         //etablire la connexion et load data
         Connection con = getConnection();
-        String query = "SELECT * FROM Medcin "+condition+" ;";
+        String query = "SELECT * FROM Infirmier "+condition+" ;";
         try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
