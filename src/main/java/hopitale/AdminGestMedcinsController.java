@@ -162,15 +162,15 @@ public class AdminGestMedcinsController implements Initializable{
 
     @FXML
     private void AnnulerFentre(ActionEvent event) {
-        tfCin.setText(null);
-        tfNom.setText(null);
-        tfPrenom.setText(null);
+        tfCin.setText("");
+        tfNom.setText("");
+        tfPrenom.setText("");
 //        tfNais.setValue(LocalDate.parse("", DateTimeFormatter.ISO_DATE));
-        tfSpecialite.setText(null);
-        tfTele.setText(null);
-        tfEmail.setText(null);
-        tfAdresse.setText(null);
-        tfPassword.setText(null);
+        tfSpecialite.setText("");
+        tfTele.setText("");
+        tfEmail.setText("");
+        tfAdresse.setText("");
+        tfPassword.setText("");
                     
     }
 
