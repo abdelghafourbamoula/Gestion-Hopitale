@@ -2,6 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -14,26 +18,25 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hopitale.VisualisationController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hopitale.VisualisationController">
    <center>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TabPane layoutX="14.0" layoutY="-1.0" prefHeight="401.0" prefWidth="587.0" rotateGraphic="true" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TabPane layoutX="14.0" layoutY="-1.0" prefHeight="401.0" prefWidth="587.0" rotateGraphic="true" side="LEFT" style="-fx-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <tabs>
-                <Tab text="Medecins">
+                <Tab style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-color: #FFFFFF;" text="Medecins">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                            <children>
-                              <Label layoutX="14.0" layoutY="13.0" prefHeight="70.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20;" text="354" textFill="WHITE">
+                              <Label fx:id="NbrMedecins" layoutX="185.0" layoutY="23.0" prefHeight="77.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20;" text="35" textFill="WHITE" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="23.0">
                                  <padding>
-                                    <Insets left="80.0" />
+                                    <Insets left="85.0" />
                                  </padding>
                                  <font>
                                     <Font name="Liberation Sans Narrow Bold" size="42.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="26.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="206.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="33.0">
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
@@ -41,15 +44,179 @@
                                     <Image url="@../images/medecins.png" />
                                  </image>
                               </ImageView>
+                              <Label fx:id="NbrMedecinsMale" layoutX="583.0" layoutY="23.0" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20; -fx-background-radius: 20 0  0 20;" text="23" textFill="WHITE" AnchorPane.rightAnchor="286.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="NbrMedecinsFemale" layoutX="695.0" layoutY="23.0" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20; -fx-background-radius: 0 20 20 0;" text="23" textFill="WHITE" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="589.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="38.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/sexe-masculin.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="699.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="38.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/femme.png" />
+                                 </image>
+                              </ImageView>
+                              <BarChart fx:id="MedecinChart" layoutX="66.0" layoutY="127.0" prefHeight="443.0" prefWidth="856.0" title="Nombre des Medecins par spacialites" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="127.0">
+                                <xAxis>
+                                  <CategoryAxis fx:id="medecin_specialites" label="Specialites" side="BOTTOM" tickLabelFill="#4a4747" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis fx:id="nombre_des_medecins" label="Nombre des Medecins" side="LEFT" tickLabelFill="#464141" />
+                                </yAxis>
+                              </BarChart>
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Untitled Tab 2">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </Tab>
+                  <Tab style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-color: #FFFFFF;" text="Infermieres">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Label fx:id="NbrInfermiers" layoutX="195.0" layoutY="23.0" prefHeight="70.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20;" text="354" textFill="WHITE" AnchorPane.leftAnchor="195.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="80.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="206.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="31.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/infirmier.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="NbrInfermiersMale" layoutX="583.0" layoutY="23.0" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20; -fx-background-radius: 20 0  0 20;" text="23" textFill="WHITE" AnchorPane.rightAnchor="286.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="NbrInfermiersFemale" layoutX="695.0" layoutY="23.0" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20; -fx-background-radius: 0 20 20 0;" text="23" textFill="WHITE" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="589.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="38.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/sexe-masculin.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="699.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="38.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/femme.png" />
+                                 </image>
+                              </ImageView>
+                              <BarChart fx:id="InfermiersChart" layoutX="66.0" layoutY="127.0" prefHeight="443.0" prefWidth="856.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="127.0">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                 </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-color: #FFFFFF;" text="Maladies">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Label fx:id="NbrMalades" layoutX="195.0" layoutY="23.0" prefHeight="70.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20;" text="354" textFill="WHITE" AnchorPane.leftAnchor="195.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="80.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="206.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="31.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/malade.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="NbrMaladesMale" layoutX="583.0" layoutY="23.0" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20; -fx-background-radius: 20 0  0 20;" text="23" textFill="WHITE" AnchorPane.rightAnchor="286.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="NbrMaladesFemale" layoutX="695.0" layoutY="23.0" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #00d2ff, #928dab); -fx-background-radius: 20; -fx-background-radius: 0 20 20 0;" text="23" textFill="WHITE" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="23.0">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Liberation Sans Narrow Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="589.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="38.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/sexe-masculin.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="699.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="38.0">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/femme.png" />
+                                 </image>
+                              </ImageView>
+                              <BarChart fx:id="MaladesChart" layoutX="14.0" layoutY="148.0" prefHeight="400.0" prefWidth="620.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                              <PieChart fx:id="MaladesPie" layoutX="659.0" layoutY="196.0" prefHeight="300.0" prefWidth="288.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
          </children>
