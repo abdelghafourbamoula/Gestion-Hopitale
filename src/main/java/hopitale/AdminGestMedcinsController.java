@@ -20,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -111,6 +112,20 @@ public class AdminGestMedcinsController implements Initializable{
     private TableColumn<Medcin, String> colEmail;
     @FXML
     private TableColumn<Medcin, String> colTele;
+    @FXML
+    private MenuItem toMed;
+    @FXML
+    private MenuItem toInf;
+    @FXML
+    private MenuItem toMal;
+    @FXML
+    private MenuItem toCat;
+    @FXML
+    private MenuItem toCat1;
+    @FXML
+    private MenuItem vis;
+    @FXML
+    private MenuItem dec;
 
     
     @Override
@@ -318,6 +333,41 @@ public class AdminGestMedcinsController implements Initializable{
         }else{
             tfSearchButtom.setStyle("-fx-stroke:  #00ace6");
         }
+    }
+
+    @FXML
+    private void toMed(ActionEvent event) {
+        Main.setRoot("AdminGestMedecins");
+    }
+
+    @FXML
+    private void toInf(ActionEvent event) {
+                Main.setRoot("AdminGestInfirmier");
+
+    }
+
+    @FXML
+    private void toMal(ActionEvent event) {
+                        Main.setRoot("GestMaladies");
+
+    }
+
+    @FXML
+    private void toCat(ActionEvent event) {
+                        Main.setRoot("AdminGestCategorie");
+
+    }
+
+    @FXML
+    private void toVis(ActionEvent event) {
+                        Main.setRoot("visualisation");
+
+    }
+
+    @FXML
+    private void toDec(ActionEvent event) {
+                        Main.setRoot("Authentification");
+
     }
     
 }

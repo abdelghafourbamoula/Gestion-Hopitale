@@ -28,6 +28,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -102,6 +103,20 @@ public class GestMaladesController implements Initializable {
     private Line tfSearchButtom;
     @FXML
     private Button bRechercherMal;
+    @FXML
+    private MenuItem toMed;
+    @FXML
+    private MenuItem toInf;
+    @FXML
+    private MenuItem toMal;
+    @FXML
+    private MenuItem toCat;
+    @FXML
+    private MenuItem toCat1;
+    @FXML
+    private MenuItem vis;
+    @FXML
+    private MenuItem dec;
     
         /**
      * Initializes the controller class.
@@ -226,8 +241,8 @@ public void ShowMalades(String requete){
                 + "'" + NaissanceMalade.getValue() + "',"
                 + "'" + MaladeTele.getText() + "',"
                 + "'" + MaladeAdresse.getText() + "',"
-                + "'" + MedecinChoice.getValue() + "',"
-                + "'" + tatusChoice.getValue() + "' " 
+                + "'" + tatusChoice.getValue() + "' ," 
+                + "'" + MedecinChoice.getValue() + "'"
                 + ");";
 
         stmt = cnt.createStatement();
@@ -288,7 +303,7 @@ try{
         MaladeCin.setText("");
         MaladeNom.setText("");
         NaissanceMalade.setValue(null);
-        MaladeAdresse.setText(null);
+        MaladeAdresse.setText("");
         MaladeTele.setText("");
         MaladeTele.setText("");
         MedecinChoice.setValue("");
@@ -369,5 +384,40 @@ try{
                 tatusChoice.setValue(mal.getStatus());
                 MedecinChoice.setValue(mal.getMedecin());
      }
+    }
+
+  @FXML
+    private void toMed(ActionEvent event) {
+        Main.setRoot("AdminGestMedecins");
+    }
+
+    @FXML
+    private void toInf(ActionEvent event) {
+                Main.setRoot("AdminGestInfirmier");
+
+    }
+
+    @FXML
+    private void toMal(ActionEvent event) {
+                        Main.setRoot("GestMaladies");
+
+    }
+
+    @FXML
+    private void toCat(ActionEvent event) {
+                        Main.setRoot("AdminGestCategorie");
+
+    }
+
+    @FXML
+    private void toVis(ActionEvent event) {
+                        Main.setRoot("visualisation");
+
+    }
+
+    @FXML
+    private void toDec(ActionEvent event) {
+                        Main.setRoot("Authentification");
+
     }
 }

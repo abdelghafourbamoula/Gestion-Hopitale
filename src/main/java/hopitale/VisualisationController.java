@@ -8,14 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 
 /**
  * FXML Controller class
@@ -47,13 +52,31 @@ public class VisualisationController implements Initializable {
     @FXML
     private Label NbrMaladesFemale;
     @FXML
-    private BarChart<?, ?> MaladesChart;
-    @FXML
     private PieChart MaladesPie;
     @FXML
     private NumberAxis nombre_des_medecins;
     @FXML
     private CategoryAxis medecin_specialites;
+    @FXML
+    private MenuItem toMed;
+    @FXML
+    private MenuItem toInf;
+    @FXML
+    private MenuItem toMal;
+    @FXML
+    private MenuItem toCat;
+    @FXML
+    private MenuItem toCat1;
+    @FXML
+    private MenuItem vis;
+    @FXML
+    private MenuItem dec;
+    @FXML
+    private Label maladesEncours;
+    @FXML
+    private Label maladesSoignes;
+    @FXML
+    private Label maladesMorts;
 
     /**
      * Initializes the controller class.
@@ -88,7 +111,40 @@ public class VisualisationController implements Initializable {
        //Infermier Chart
        String InferChartquery = "SELECT specialite AS diplome, COUNT(cin) AS nbrInfer FROM Infirmier GROUP BY specialite;";
        traceChart(InfermiersChart, InferChartquery, "nombre des infirmieres", "diplome", "nbrInfer");
-        
+      
+       //nombre des malades
+       String nbrMal = countElements("SELECT COUNT(*) FROM Malades;","COUNT(*)");
+       NbrMalades.setText(nbrMal);
+       
+       String nbrMalM = countElements("SELECT COUNT(*) FROM Malades WHERE LOWER(sexe)='male' ;", "COUNT(*)");
+       NbrMaladesMale.setText(nbrMalM);
+       
+       String nbrMalF = countElements("SELECT COUNT(*) FROM Malades WHERE LOWER(sexe)='female' ;", "COUNT(*)");
+       NbrMaladesFemale.setText(nbrMalF);
+       
+       String nbrMalEncours = countElements("SELECT COUNT(*) FROM Malades WHERE status = 'en cours' ;","COUNT(*)");
+       maladesEncours.setText(nbrMalEncours);
+       
+       String nbrMalSoignes = countElements("SELECT COUNT(*) FROM Malades WHERE status = 'sain' ;","COUNT(*)");
+       maladesSoignes.setText(nbrMalSoignes);
+       
+       String nbrMalMort = countElements("SELECT COUNT(*) FROM Malades WHERE status = 'mort' ;","COUNT(*)");
+       maladesMorts.setText(nbrMalMort);
+       
+       //malades chart
+       traceMaladesChart();
+       
+       //color med bars
+       for(Node n:MedecinChart.lookupAll(".default-color0.chart-bar")) {
+            n.setStyle("-fx-bar-fill: #5544ff;");
+       }
+       
+       //color inf bars
+       for(Node n:InfermiersChart.lookupAll(".default-color0.chart-bar")) {
+            n.setStyle("-fx-bar-fill: #44ff94;");
+       }
+       
+       
     }    
     
         public Connection getConnection(){
@@ -131,10 +187,68 @@ public class VisualisationController implements Initializable {
             }
             
             barchart.getData().add(series);
+            
         }
         catch(SQLException ex){
             System.out.println(">>> SQL:"+ex.getMessage());
         }
+
+    }
+    
+    public void traceMaladesChart(){
+        Connection con = getConnection();
+        String query = "SELECT status, COUNT(*) as nbrMal FROM Malades GROUP BY status;";
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList();
+            
+            while(rs.next()){
+                pieData.add(new PieChart.Data(rs.getString("status"), rs.getInt("nbrMal")));
+            }
+            
+            MaladesPie.setData(pieData);
+            
+           
+            
+        } catch(SQLException e){
+            System.out.println(">>> SQL :"+e);
+        }
+    }
+
+    
+    @FXML
+    private void toMed(ActionEvent event) {
+        Main.setRoot("AdminGestMedecins");
+    }
+
+    @FXML
+    private void toInf(ActionEvent event) {
+                Main.setRoot("AdminGestInfirmier");
+
+    }
+
+    @FXML
+    private void toMal(ActionEvent event) {
+                        Main.setRoot("GestMaladies");
+
+    }
+
+    @FXML
+    private void toCat(ActionEvent event) {
+                        Main.setRoot("AdminGestCategorie");
+
+    }
+
+    @FXML
+    private void toVis(ActionEvent event) {
+                        Main.setRoot("visualisation");
+
+    }
+
+    @FXML
+    private void toDec(ActionEvent event) {
+                        Main.setRoot("Authentification");
 
     }
     

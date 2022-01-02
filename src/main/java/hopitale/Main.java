@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         
         try{
-            scene = new Scene(loadFXML("GestMaladies"));
+            scene = new Scene(loadFXML("Authentification"));
             primaryStage.setScene(scene);
             primaryStage.setTitle("Hopitale");
             primaryStage.show();
@@ -30,8 +30,12 @@ public class Main extends Application {
         return FXMLLoader.load(Main.class.getResource(fxml+".fxml"));
     }
     
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    static void setRoot(String fxml) {
+        try{
+            scene.setRoot(loadFXML(fxml));
+        }catch(IOException e){
+            System.out.println(e);
+        }
     }
     
     public static void main(String[] args) {

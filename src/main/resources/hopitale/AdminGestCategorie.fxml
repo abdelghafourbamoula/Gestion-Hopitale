@@ -43,27 +43,6 @@
             <Label layoutX="439.0" layoutY="14.0" text="Nom :" textFill="#9a9a9a" AnchorPane.rightAnchor="331.0" />
          </children></AnchorPane>
    </center>
-   <top>
-      <MenuBar prefHeight="15.0" prefWidth="600.0" style="-fx-background-color: #e0e0f0;" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="236.0" BorderPane.alignment="CENTER">
          <children>
@@ -127,4 +106,29 @@
          </children>
       </AnchorPane>
    </left>
+   <top>
+      <MenuBar prefHeight="15.0" prefWidth="600.0" style="-fx-background-color: #e0e0f0;" BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="Gestion">
+               <items>
+                  <MenuItem fx:id="toMed" mnemonicParsing="false" onAction="#toMed" text="Medecin" />
+                  <MenuItem fx:id="toInf" mnemonicParsing="false" onAction="#toInf" text="Infirmier" />
+                  <MenuItem fx:id="toMal" mnemonicParsing="false" onAction="#toMal" text="Malades" />
+                  <MenuItem fx:id="toCat" mnemonicParsing="false" onAction="#toCat" text="Categories" />
+                  <MenuItem fx:id="toCat1" mnemonicParsing="false" onAction="#toCat" text="Categories" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Statistiques">
+               <items>
+                  <MenuItem fx:id="vis" mnemonicParsing="false" onAction="#toVis" text="Visualiser" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Deconnecter">
+               <items>
+                  <MenuItem fx:id="dec" mnemonicParsing="false" onAction="#toDec" text="Deconnecter" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
 </BorderPane>

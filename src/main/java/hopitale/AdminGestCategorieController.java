@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -90,6 +92,20 @@ public class AdminGestCategorieController implements Initializable  {
 
     @FXML
     private Line tfSearchButtom;
+    @FXML
+    private MenuItem toMed;
+    @FXML
+    private MenuItem toInf;
+    @FXML
+    private MenuItem toMal;
+    @FXML
+    private MenuItem toCat;
+    @FXML
+    private MenuItem toCat1;
+    @FXML
+    private MenuItem vis;
+    @FXML
+    private MenuItem dec;
      
         @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -297,6 +313,40 @@ try{
         }
     }
 
+    @FXML
+    private void toMed(ActionEvent event) {
+        Main.setRoot("AdminGestMedecins");
+    }
+
+    @FXML
+    private void toInf(ActionEvent event) {
+                Main.setRoot("AdminGestInfirmier");
+
+    }
+
+    @FXML
+    private void toMal(ActionEvent event) {
+                        Main.setRoot("GestMaladies");
+
+    }
+
+    @FXML
+    private void toCat(ActionEvent event) {
+                        Main.setRoot("AdminGestCategorie");
+
+    }
+
+    @FXML
+    private void toVis(ActionEvent event) {
+                        Main.setRoot("visualisation");
+
+    }
+
+    @FXML
+    private void toDec(ActionEvent event) {
+                        Main.setRoot("Authentification");
+
+    }
 
  
 

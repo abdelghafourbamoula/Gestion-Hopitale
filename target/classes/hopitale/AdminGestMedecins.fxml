@@ -53,19 +53,23 @@
    <top>
       <MenuBar prefHeight="15.0" prefWidth="600.0" style="-fx-background-color: #e0e0f0;" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Gestion">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="toMed" mnemonicParsing="false" onAction="#toMed" text="Medecin" />
+                  <MenuItem fx:id="toInf" mnemonicParsing="false" onAction="#toInf" text="Infirmier" />
+                  <MenuItem fx:id="toMal" mnemonicParsing="false" onAction="#toMal" text="Malades" />
+                  <MenuItem fx:id="toCat" mnemonicParsing="false" onAction="#toCat" text="Categories" />
+                  <MenuItem fx:id="toCat1" mnemonicParsing="false" onAction="#toCat" text="Categories" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Statistiques">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="vis" mnemonicParsing="false" onAction="#toVis" text="Visualiser" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Deconnecter">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="dec" mnemonicParsing="false" onAction="#toDec" text="Deconnecter" />
             </items>
           </Menu>
         </menus>
